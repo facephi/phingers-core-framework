@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name         = "FPhiPhingersiOS"
+  s.name         = "FPhiPhingersCoreiOS"
   s.version      = "1.0.0"
   s.summary      = "Phingers widget for Fingerprint detection and recognition"
   s.description  = <<-DESC
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.authors      = { "FacePhi" => "support@facephi.com" }
   
   s.platform     = :ios, "10.0"
-  s.source       = { :git => "https://github.com/facephi/phingers-framework.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/facephi/phingers-core-framework.git", :tag => "#{s.version}" }
 
   s.vendored_frameworks = 'Frameworks/*.framework'
   s.frameworks          = 'CoreMedia','AVFoundation','AssetsLibrary'
