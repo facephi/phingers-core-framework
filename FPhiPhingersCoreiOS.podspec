@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "FPhiPhingersCoreiOS"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Phingers widget for Fingerprint detection and recognition"
   s.description  = <<-DESC
                   Phingers widget for Fingerprint detection and recognition.
@@ -40,17 +40,17 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {
     'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386'
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
   }
 
   s.pod_target_xcconfig = {
     'ENABLE_BITCODE' => 'NO',
     'OTHER_LDFLAGS' => '-lObjC',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386'
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
   }
 
   s.user_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386'
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
   }
 
 end
