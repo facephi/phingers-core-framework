@@ -24,10 +24,6 @@
  */
 @property UIImage *rawImage;
 /*!
- * @brief The grayscale raw image.
- */
-@property UIImage *grayRawImage;
-/*!
  * @brief The processed image.
  */
 @property UIImage *processedImage;
@@ -36,46 +32,21 @@
  */
 @property UIImage *enhancedImage;
 /*!
+ * @brief The slap image
+ */
+ @property UIImage *slapImage;
+/*!
  * @brief The fingerprint template, to be used with Onyx matchers.
  */
 @property NSData *fingerprintTemplate;
-/*!
- * @brief The ISO fingerprint template.
- */
-@property NSData *ISOFingerprintTemplate;
 /*!
  * @brief The WSQ data for processed fingerprint.
  */
 @property NSData *WSQ;
 /*!
- * @brief The WSQ data for grayscale source image.
- */
-@property NSData *rawGrayWSQ;
-/*!
- * @brief Black and white image of the processed image.
- */
-@property UIImage *blackWhiteProcessed;
-/*!
- * @brief The quality score. Any score over 15 is acceptable.
- */
-@property float quality;
-/*!
- * @brief The focus measure score. [0, 1] 0.1 is acceptable.
- */
-@property float focusMeasure;
-/*!
  * @brief The nfiqscore of the fingerprint.
  */
 @property int nfiqscore;
-/*!
- * @brief The mlscore of the fingerprint.
- */
-@property float mlpscore;
-/*!
- * @brief The direction of the finger.
- * Images will be flipped upright beforehand.
- */
-@property NSInteger fingerDirection;
 /*!
  * @brief The finger number.
  */

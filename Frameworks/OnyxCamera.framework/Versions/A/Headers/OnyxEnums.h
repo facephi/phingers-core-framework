@@ -55,6 +55,13 @@ typedef enum Error {
      * of too low quality (NFIQ Score = 5)
      */
     FINGERPRINT_TOO_LOW_QUALITY,
+    
+    /**
+     * This error occurs when there are no fingers detected, such as for manual capture when
+     * no fingers are in the image.
+     */
+    NO_FINGERS_DETECTED,
+    
     /**
      * This error occurs if there is an error communicating with the liveness detection
      * server.  Check if there is an internet connection, and if not, advise client to
@@ -63,11 +70,6 @@ typedef enum Error {
     LIVENESS_FAILURE
 } Error;
 
-typedef enum LayoutPreference {
-    UPPER_THIRD,
-    FULL
-} LayoutPreference;
-
 typedef enum ReticleOrientation {
     LEFT,
     RIGHT,
@@ -75,10 +77,10 @@ typedef enum ReticleOrientation {
 } ReticleOrientation;
 
 typedef enum ImageRotation {
-    ROTATE_NONE = 0,
-    ROTATE_90_COUNTER_CLOCKWISE = 90,
-    ROTATE_180 = 180,
-    ROTATE_90_CLOCKWISE = 270 // 270
+    IMAGE_ROTATE_NONE = 0,
+    IMAGE_ROTATE_90_COUNTER_CLOCKWISE = 90,
+    IMAGE_ROTATE_180 = 180,
+    IMAGE_ROTATE_90_CLOCKWISE = 270 // 270
 } ImageRotation;
 
 typedef enum FingerDetectMode {
@@ -92,3 +94,20 @@ typedef enum CaptureDepth : NSUInteger {
     TOO_CLOSE,
     TOO_FAR
 } CaptureDepth;
+
+typedef enum ResizeMode : NSUInteger {
+    IN_PLACE,
+    COPY
+} ResizeMode;
+
+typedef enum ImageSize : NSUInteger {
+    PREVIEW,
+    QUALITYNET,
+    P900
+} ImageSize;
+
+typedef enum FingerprintTemplateType {
+    NONE,
+    ISO,
+    INNOVATRICS
+} FingerprintTemplateType;

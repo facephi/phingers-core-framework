@@ -15,6 +15,7 @@
 #import "OnyxConfiguration.h"
 #import "CaptureNetController.h"
 #import "QualityNetController.h"
+#import "OnyxEnums.h"
 
 #define fingerStepSize 15
 #define fingerStepPadding 10
@@ -24,6 +25,7 @@
 @class ProcessedFingerprint;
 @class FingerGuideView;
 @class StepIndicatorView;
+@class M13ProgressViewImage;
 
 /*!
  @class OnyxViewController
@@ -55,6 +57,7 @@
     NSMutableArray *stepIndicatorViews;
     FingerGuideView *fingerGuideView;
     UIImageView *logoImageView;
+    M13ProgressViewImage *progressView;
     UIView *fingertipView;
     UIView *imagePreview;
     UIImage *fingerImage;
@@ -73,11 +76,6 @@
 }
 
 /*!
- * @brief Holds the medianWidthEMA of a finger
- */
-@property double medianWidthEMA;
-
-/*!
  * @brief Holds the fingerQualityEMA of a finger
  */
 @property double fingerQualityEMA;
@@ -91,6 +89,11 @@
  *@brief The OnyxViewController's configuration
  */
 @property OnyxConfiguration *onyxConfig;
+
+/*!
+ * @brief The OnyxResult to be passed on with metrics of the capture
+ */
+@property OnyxResult *onyxResult;
 
 /*!
  * @brief The onyx-core's version number
@@ -114,20 +117,10 @@
 
 @property NSArray *scaleFactors;
 
-@property UILabel *infoLabel1;
-@property UILabel *infoLabel2;
-
-/*!
- * @brief Text for a custom label in the info view.
- */
-@property NSString *infoText;
-
 /*!
  * @brief Boolean for showing debug info on screen
  */
 @property bool showDebug;
-
-@property float focusMeasurementRequirement;
 
 @property int frameCount;
 
@@ -183,10 +176,11 @@
 #pragma mark - OnyxViewControllerDelegate
 // OnyxViewController Delegate methods
 @protocol OnyxViewControllerDelegate
-- (void) Onyx:(OnyxViewController *)controller didOutputProcessedFingerprint:(NSMutableArray *)processedFingerprints;
+- (void) Onyx:(OnyxViewController *)controller didOutputProcessedFingerprint:(NSMutableArray *)processedFingerprints
+    withFullFrame:(UIImage*) fullResImage;
 /*!
  * @return NSError
  */
-- (void) Onyx:(OnyxViewController *)controller errorCallback:(NSError* )error;
+- (void) Onyx:(OnyxViewController *)controller errorCallback:(NSError* )error withMessage:(NSString*)errorMessage;
 - (void) Onyx:(OnyxViewController *)controller onCancel:(NSError*)error;
 @end

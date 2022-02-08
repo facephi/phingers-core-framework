@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "FPhiPhingersCoreiOS"
-  s.version      = "1.0.2"
+  s.version      = "8.0.5"
   s.summary      = "Phingers widget for Fingerprint detection and recognition"
   s.description  = <<-DESC
                   Phingers widget for Fingerprint detection and recognition.
@@ -22,35 +22,9 @@ Pod::Spec.new do |s|
                   }
   s.authors      = { "FacePhi" => "support@facephi.com" }
   
-  s.platform     = :ios, "10.0"
-  s.source       = { :git => "https://github.com/facephi/phingers-core-framework.git", :tag => "#{s.version}" }
+  s.platform     = :ios, "11.0"
+  s.source       = { :git => "https://gitlab.com/telosid/plugins/specs.git" }
 
-  s.vendored_frameworks = 'Frameworks/*.framework'
-  s.frameworks          = 'CoreMedia','AVFoundation','AssetsLibrary'
-
-  s.dependency 'OpenCV', '3.4.5'
-  s.dependency 'TensorFlowLiteObjC'      
-
-  s.resource_bundles = {
-    'PhingersCamera' => ['Assets/*.*']
-  }
-
-  s.requires_arc      = true
-  s.static_framework  = true
-
-  s.xcconfig = {
-    'FRAMEWORK_SEARCH_PATHS' => '$(inherited)',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
-  }
-
-  s.pod_target_xcconfig = {
-    'ENABLE_BITCODE' => 'NO',
-    'OTHER_LDFLAGS' => '-lObjC',
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
-  }
-
-  s.user_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 i386 x86_64'
-  }
+  s.dependency 'OnyxCamera', '8.0.2'
 
 end

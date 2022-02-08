@@ -138,7 +138,6 @@ MatchResult pyramidIdentify(
 /// \param[in] src the 24-bit color image provided to CaptureNet
 /// \param[in] mask the 8-bit mask image provided by CaptureNet
 /// \param[in] markers the 8-bit markers image provided by CaptureNet
-/// \param[out] fingerMask cleaned version of input mask
 /// \param[in] sizeFactor how much to scale detected ellipses
 /// \return an array of detected Finger locations
 /// \throws DftException if an error occurs.
@@ -147,7 +146,6 @@ std::vector<Finger> findFingers(
   const cv::Mat& src,
   const cv::Mat& mask,
   const cv::Mat& markers,
-  cv::Mat& fingerMask,
   float sizeFactor = 0.8f
 );
 
@@ -170,7 +168,20 @@ double findPixelsPerInch(const cv::Mat& image, double minSize = 5000, double min
 /// \param[in] image 24-bit color full resolution image
 /// \param[in] fingers vector of detected Finger objects
 /// \param[in] scaleFactor needed to scale Finger objects to full resolution image
+/// \return the extracted slap image
 cv::Mat extractSlapImage(const cv::Mat& image, std::vector<dft::Finger> fingers, float scaleFactor);
+
+/// This member function returns a combined slap image
+/// \param[in] images a vector of 8-bit processed images
+/// \return the images concatenated horizontally
+cv::Mat concatenateHorizontal(const std::vector<cv::Mat>& images);
+
+/// This member function returns a combined slap image
+/// \param[in] image an image to scale into an image pyramid
+/// \param[in] scales a vector of doubles defining the scales in the image pyramid
+/// \return the image pyramid vector
+std::vector<cv::Mat> pyramidImage(const cv::Mat& image, const std::vector<double>& scales);
+
 }
 
 #endif /* CORE_H_ */

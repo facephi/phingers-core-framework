@@ -21,7 +21,6 @@ std::vector<Finger> findFingersImpl(
   const cv::Mat& image,
   const cv::Mat& mask,
   const cv::Mat& markers,
-  cv::Mat& finger_mask,
   float size_factor
 );
 
