@@ -12,12 +12,12 @@
 @interface CaptureMetrics : NSObject
 @property float livenessConfidence;
 @property NSMutableArray* nfiqMetrics;
-@property float focusQuality;
-@property float distanceToCenter;
+@property float qualityMetric;
+@property double actualScale;
+@property int outputPixelsPerInch;
 
 - (float) getLivenessConfidence;
-- (float) getFocusQuality;
-- (float) getDistanceToCenter;
+- (float) getQualityMetric;
 - (NSMutableArray *) getNfiqMetrics;
 
 @end

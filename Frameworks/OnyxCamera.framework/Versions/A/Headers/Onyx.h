@@ -5,6 +5,17 @@
 //  Created by Matthew Wheatley on 9/27/17.
 //  Copyright © 2017 Diamond Fortress. All rights reserved.
 //
+
+#pragma once
+
+#ifndef CV_EXPORTS
+#ifdef __cplusplus
+#define CV_EXPORTS __attribute__ ((visibility ("default")))
+#else
+#define CV_EXPORTS
+#endif
+#endif
+
 #ifdef __cplusplus
 #import <opencv2/core.hpp>
 #import <opencv2/imgcodecs/ios.h>
@@ -20,26 +31,30 @@
 @interface Onyx : NSObject <OnyxViewControllerDelegate> {
     NSInteger selectedFinger;
     NSInteger fingerDirection;
-    UIView* spinnerView;
-    UIActivityIndicatorView* activityIndicatorView;
+    UIView *spinnerView;
+    UIActivityIndicatorView *activityIndicatorView;
 }
 
 /*!
  * @brief ONYX's delegate
  */
-@property (strong, nonatomic) id delegate;
+@property(strong, nonatomic) id delegate;
 
 /*!
  * @brief ONYX Config data
  */
-@property OnyxConfiguration* onyxConfig;
-@property UIViewController* viewController;
-@property OnyxResult* onyxResult;
+@property OnyxConfiguration *onyxConfig;
+@property UIViewController *viewController;
+@property OnyxResult *onyxResult;
 
-extern NSString * const IMAGE_URI_PREFIX;
+extern NSString *const IMAGE_URI_PREFIX;
 
--(void)doSetup:(OnyxConfiguration*)onyxConfig;
--(void)capture:(UIViewController*)viewController;
+- (void)doSetup:(OnyxConfiguration *)onyxConfig;
+
+- (void)capture:(UIViewController *)viewController;
+
+- (void) Onyx:(OnyxViewController *)controller didOutputProcessedFingerprint:(NSMutableArray *)processedFingerprints
+withFullFrame:(UIImage *)fullResImage withOnyxResult:(OnyxResult *)onyxResult;
 
 @end
 
@@ -47,6 +62,9 @@ extern NSString * const IMAGE_URI_PREFIX;
 
 // Onyx Delegate methods
 @protocol OnyxDelegate
-- (void) Onyx:(Onyx *)controller successCallback:(NSData *)data;
-- (void) Onyx:(Onyx *)controller errorCallback:(NSError *)error;
+- (void)Onyx:(Onyx *)controller successCallback:(NSData *)data;
+
+- (void)Onyx:(Onyx *)controller errorCallback:(NSError *)error withMessage:(NSString *)errorMessage;
+
+- (void)Onyx:(Onyx *)controller onCancel:(NSError *)error;
 @end

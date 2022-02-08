@@ -15,8 +15,6 @@ std::vector<unsigned char> matToWsq(
 
 cv::Mat wsqToMat(const std::vector<unsigned char>& wsqData, int& ppi);
 
-std::vector<cv::Mat> pyramidImage(const cv::Mat& image, const std::vector<double>& scales);
-
 struct NfiqMetrics {
   int nfiqScore;
   float mlpScore;

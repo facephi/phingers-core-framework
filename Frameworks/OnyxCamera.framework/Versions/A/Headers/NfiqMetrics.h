@@ -10,8 +10,6 @@
 
 @interface NfiqMetrics : NSObject
 @property int nfiqScore;
-@property float mlpScore;
 
 - (int) getNfiqScore;
-- (float) getMlpScore;
 @end

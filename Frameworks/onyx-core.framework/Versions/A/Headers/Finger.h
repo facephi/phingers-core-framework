@@ -37,6 +37,13 @@ class Finger {
   explicit Finger(const cv::RotatedRect& fingerEllipse_, const cv::Point2f& fingerTip_ = cv::Point2f(-1.0f, -1.0f))
     : fingerEllipse(fingerEllipse_), fingerTip(fingerTip_) {}
 
+  /// Constructs a Finger object from given contour and circle.
+  /// \param[in] other other finger object to copy
+  Finger(const Finger& other) {
+    fingerEllipse = other.fingerEllipse;
+    fingerTip = other.fingerTip;
+  }
+
   /// This member function determines if the Finger object is valid.
   /// \return true if the Finger object is valid, otherwise false.
   bool isValid() const {

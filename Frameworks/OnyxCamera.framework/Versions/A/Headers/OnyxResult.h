@@ -14,10 +14,10 @@
 @property NSMutableArray* rawFingerprintImages;
 @property NSMutableArray* processedFingerprintImages;
 @property NSMutableArray* enhancedFingerprintImages;
-@property NSMutableArray* blackWhiteProcessedFingerprintImages;
+@property UIImage* slapImage;
+@property UIImage* fullFrameImage;
 @property NSMutableArray* wsqData;
 @property NSMutableArray* fingerprintTemplates;
-@property NSMutableArray* ISOFingerprintTemplates;
 @property CaptureMetrics* captureMetrics;
 
 - (NSMutableArray*) getRawFingerprintImages;
@@ -26,13 +26,13 @@
 
 - (NSMutableArray*) getEnhancedFingerprintImages;
 
-- (NSMutableArray*) getBlackWhiteProcessedFingerprintImages;
+- (UIImage*) getSlapImage;
+
+- (UIImage*) getFullFrameImage;
 
 - (NSMutableArray*) getWsqData;
 
 - (NSMutableArray*) getFingerprintTemplates;
-
-- (NSMutableArray*) getISOFingerprintTemplates;
 
 - (CaptureMetrics*) getMetrics;
 
