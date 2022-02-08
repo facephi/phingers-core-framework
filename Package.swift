@@ -3,13 +3,16 @@
 
 import PackageDescription
 
+var onyxCameraVersion: String = "8.0.5"
+var onyxCoreVersion: String = "7.2.1"
+
 let package = Package(
-    name: "phingers-widget-ios-package",
+    name: "phingers-core-package",
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "phingers-widget-ios-package",
-            targets: ["phingers-widget-ios-package"]),
+            name: "phingers-core-package",
+            targets: ["phingers-core-package"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -19,10 +22,14 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "phingers-widget-ios-package",
-            dependencies: []),
+            name: "phingers-core-package",
+            dependencies: ["OnyxCamera", "OnyxCore"]),
+            resources: ["Frameworks/" + onyxCameraVersion + "Frameworks/8.0.5/OnyxCamera.framework/Resources/*.tflite", "Frameworks/8.0.5/OnyxCamera.framework/Resources/Assets.car", "Assets/*.*"],
+            publicHeadersPath: String? = nil,
         .testTarget(
-            name: "phingers-widget-ios-packageTests",
-            dependencies: ["phingers-widget-ios-package"]),
+            name: "phingers-core-packageTests",
+            dependencies: ["phingers-core-package"]),
+        .binaryTarget(name: "OnyxCamera", path: "Frameworks/8.0.5/OnyxCamera.framework"),
+        .binaryTarget(name: "OnyxCore", path: "Frameworks/7.2.1/Onyx-core.framework"),
     ]
 )
