@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "FPhiPhingersCoreiOS"
-  s.version      = "8.0.5"
+  s.version      = "8.0.11"
   s.summary      = "Phingers widget for Fingerprint detection and recognition"
   s.description  = <<-DESC
                   Phingers widget for Fingerprint detection and recognition.
@@ -25,6 +25,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "11.0"
   s.source       = { :git => "https://gitlab.com/telosid/plugins/specs.git" }
 
-  s.dependency 'OnyxCamera', '8.0.2'
+  s.dependency 'OnyxCamera', '8.0.11'
 
 end

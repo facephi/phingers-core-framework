@@ -3,8 +3,8 @@
 
 import PackageDescription
 
-var onyxCameraVersion: String = "8.0.5"
-var onyxCoreVersion: String = "7.2.1"
+var onyxCameraVersion: String = "8.0.11"
+var onyxCoreVersion: String = "8.0.11"
 
 let package = Package(
     name: "phingers-core-package",
@@ -24,12 +24,12 @@ let package = Package(
         .target(
             name: "phingers-core-package",
             dependencies: ["OnyxCamera", "OnyxCore"]),
-            resources: ["Frameworks/" + onyxCameraVersion + "Frameworks/8.0.5/OnyxCamera.framework/Resources/*.tflite", "Frameworks/8.0.5/OnyxCamera.framework/Resources/Assets.car", "Assets/*.*"],
+            resources: ["Frameworks/" + onyxCameraVersion + "Frameworks/8.0.11/OnyxCamera.framework/Resources/*.tflite", "Frameworks/8.0.11/OnyxCamera.framework/Resources/Assets.car", "Assets/*.*"],
             publicHeadersPath: String? = nil,
         .testTarget(
             name: "phingers-core-packageTests",
             dependencies: ["phingers-core-package"]),
-        .binaryTarget(name: "OnyxCamera", path: "Frameworks/8.0.5/OnyxCamera.framework"),
-        .binaryTarget(name: "OnyxCore", path: "Frameworks/7.2.1/Onyx-core.framework"),
+        .binaryTarget(name: "OnyxCamera", path: "Frameworks/8.0.11/OnyxCamera.framework"),
+        .binaryTarget(name: "OnyxCore", path: "Frameworks/8.0.11/Onyx-core.framework"),
     ]
 )
