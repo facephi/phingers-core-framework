@@ -17,14 +17,22 @@ Pod::Spec.new do |s|
   s.license      = {
                     :type => "Commercial", 
                     :text => <<-LICENSE
-                    © Facephi 2021. All rights reserved.
+                    © Facephi 2022. All rights reserved.
                     LICENSE
                   }
   s.authors      = { "FacePhi" => "support@facephi.com" }
   
   s.platform     = :ios, "11.0"
-  s.source       = { :git => "https://gitlab.com/telosid/plugins/specs.git" }
+  s.source       = { :git => "https://github.com/facephi/phingers-core-framework.git" }
 
-  s.dependency 'OnyxCamera', '8.0.11'
+  s.ios.vendored_frameworks = './Frameworks/OnyxCamera/8.0.11/OnyxCamera.framework', './Frameworks/OnyxCore/8.0.11/onyx-camera.framework'
+  s.requires_arc            = true
+  s.xcconfig                = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited)', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
+  s.pod_target_xcconfig     = { 'ENABLE_BITCODE' => 'NO', 'OTHER_LDFLAGS' => '-lObjC', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
+  s.resource_bundles        = { 'OnyxCamera' => ['Assets/*.*'] }
+  s.frameworks              = 'CoreMedia', 'AVFoundation', 'AssetsLibrary'
+  s.dependency                'OpenCV', '3.4.5'
+  s.dependency                'TensorFlowLiteObjC'
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }                             
 
 end
