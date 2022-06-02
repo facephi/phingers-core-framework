@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "FPhiPhingersCoreiOS"
-  s.version      = "8.0.11"
+  s.version      = "2.0.0"
   s.summary      = "Phingers widget for Fingerprint detection and recognition"
   s.description  = <<-DESC
                   Phingers widget for Fingerprint detection and recognition.
