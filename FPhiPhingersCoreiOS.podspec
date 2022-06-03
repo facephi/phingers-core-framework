@@ -23,16 +23,24 @@ Pod::Spec.new do |s|
   s.authors      = { "FacePhi" => "support@facephi.com" }
   
   s.platform     = :ios, "11.0"
-  s.source       = { :git => "https://github.com/facephi/phingers-core-framework.git" }
+  s.source       = { :http => "https://dev-ctlzip-s3.s3.eu-west-1.amazonaws.com/Phingers/2.0.0/phingers.framework.zip" }
 
-  s.ios.vendored_frameworks = 'Frameworks/OnyxCamera/8.0.11/OnyxCamera.framework', 'Frameworks/OnyxCore/8.0.11/onyx-camera.framework'
+  s.vendored_frameworks = '*.framework'
+  s.preserve_paths = 'OnyxCamera.framework', 'onyx-core.framework'
   s.requires_arc            = true
   s.xcconfig                = { 'FRAMEWORK_SEARCH_PATHS' => '$(inherited)', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
   s.pod_target_xcconfig     = { 'ENABLE_BITCODE' => 'NO', 'OTHER_LDFLAGS' => '-lObjC', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
-  s.resource_bundles        = { 'OnyxCamera' => ['Assets/*.*'] }
-  s.frameworks              = 'CoreMedia', 'AVFoundation', 'AssetsLibrary'
-  s.dependency                'OpenCV', '3.4.5'
+  
+  s.source_files = 'OnyxCamera.framework/Versions/A/Headers/**/*.h', 'OnyxCore.framework/Versions/A/Headers/**/*.h'
+  #s.pod_target_xcconfig     = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
+s.user_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'LD_RUNPATH_SEARCH_PATHS' => '/usr/lib/swift $(inherited)', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }
+
+  s.resource_bundles = {
+    'Resources' => ['OnyxCamera.framework/Resources/*.tflite', 'onyx-core.framework/Resources/Assets.car']
+  }
+
+  s.frameworks              = 'UIKit', 'CoreText', 'CoreMedia', 'AVFoundation', 'AssetsLibrary'
   s.dependency                'TensorFlowLiteObjC'
-  #s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }                             
+#  s.user_target_xcconfig = {  'ENABLE_BITCODE' => 'NO', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64 armv7' }                             
 
 end
